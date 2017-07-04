@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<open>0</open>
+
+	{% for item in data %}
+	<GroundOverlay>
+		<name>Cloud Prediction {{ item.sequence }}</name>
+		<TimeSpan>
+			<begin>{{ item.start.strftime('%Y-%m-%dT%H:%M:%SZ') }}</begin>
+			<end>{{ item.end.strftime('%Y-%m-%dT%H:%M:%SZ') }}</end>
+		</TimeSpan>
+		<Icon>
+			<href>
+				{{ item.path }}
+			</href>
+			<refreshMode>onInterval</refreshMode>
+			<refreshInterval>300</refreshInterval>
+			<viewRefreshMode>onRequest</viewRefreshMode>
+			<viewBoundScale>0.75</viewBoundScale>
+		</Icon>
+
+		<altitude>72660</altitude>
+		<altitudeMode>absolute</altitudeMode>
+
+		<LatLonBox>
+			<north>49.38877455386998</north>
+			<south>23.82401315924861</south>
+			<east>-66.86038951763682</east>
+			<west>-105.1818369662925</west>
+			<rotation>-19.89109717451187</rotation>
+		</LatLonBox>
+	</GroundOverlay>
+	{% endfor %}
+</Document>
+</kml>
